@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rent Management System</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header class="topbar">
+        <div>
+            <h1>Rent Management System</h1>
+            <p>Manage tenants, properties and rental payments efficiently</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <!-- Dashboard -->
+        <section class="dashboard">
+
+            <div class="stat-card">
+                <span class="stat-label">Total Tenants</span>
+                <strong id="totalTenants">0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">Total Rent</span>
+                <strong id="totalRent">₹0</strong>
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-label">Pending Payments</span>
+                <strong id="pendingPayments">0</strong>
+            </div>
+
+        </section>
+
+
+        <!-- Add Tenant -->
+        <section class="card">
+
+            <div class="section-header">
+                <div>
+                    <h2>Add Tenant</h2>
+                    <p>Enter the tenant and rental details below.</p>
+                </div>
+            </div>
+
+            <form id="tenantForm">
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="tenantName">Tenant Name</label>
+                        <input
+                            type="text"
+                            id="tenantName"
+                            placeholder="Enter tenant name"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="propertyName">Property / Room</label>
+                        <input
+                            type="text"
+                            id="propertyName"
+                            placeholder="Enter property or room"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rent">Monthly Rent</label>
+                        <input
+                            type="number"
+                            id="rent"
+                            placeholder="Enter monthly rent"
+                            min="0"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dueDate">Due Date</label>
+                        <input
+                            type="date"
+                            id="dueDate"
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="contact">Contact Number</label>
+                        <input
+                            type="tel"
+                            id="contact"
+                            placeholder="Enter contact number"
+                            
+                            required
+                        >
+                    </div>
+
+                    <div class="form-group">
+                        <label for="status">Payment Status</label>
+                        <select id="status" required>
+                            <option value="Paid">Paid</option>
+                            <option value="Pending">Pending</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <button type="submit" class="primary-btn">
+                    Add Tenant
+                </button>
+
+            </form>
+
+            <div id="message"></div>
+
+        </section>
+
+
+        <!-- Tenant Records -->
+        <section class="card">
+
+            <div class="section-header records-header">
+
+                <div>
+                    <h2>Tenant Records</h2>
+                    <p>View and manage all rental records.</p>
+                </div>
+
+                <input
+                    type="search"
+                    id="searchInput"
+                    placeholder="Search tenant..."
+                >
+
+            </div>
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Tenant</th>
+                            <th>Property / Room</th>
+                            <th>Rent</th>
+                            <th>Due Date</th>
+                            <th>Contact</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="tenantTableBody">
+                        <tr>
+                            <td colspan="7" class="empty-state">
+                                No tenant records available.
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+
+</body>
+</html>
